@@ -64,8 +64,10 @@ export default function Home() {
             </span>
           </div>
           
-          {/* Bottom wide card */}
-          <div className="absolute top-[362px] left-[372px] w-[542px] h-[121px] bg-[#323232] rounded-[24px]"></div>
+          {/* About Me */}
+          <div className="absolute top-[362px] left-[372px] w-[542px] h-[121px] bg-[#323232] rounded-[24px] overflow-hidden flex items-center justify-center">
+            <img src="/abme.svg" alt="About Me" className="w-full h-full object-cover" />
+          </div>
         </div>
       </div>
     </main>
