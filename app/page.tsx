@@ -40,16 +40,16 @@ export default function Home() {
           </div>
 
           {/* Gallery */}
-          <div className="absolute top-[76px] left-[372px] w-[256px] h-[120px] bg-[#323232] rounded-[24px] border-2 border-white/10 flex items-center justify-start gap-4 pl-[54px]">
+          <a href="" className="absolute top-[76px] left-[372px] w-[256px] h-[120px] bg-[#323232] rounded-[24px] border-2 border-white/10 flex items-center justify-start gap-4 pl-[54px] transition-colors hover:bg-[#3a3a3a]">
             <span className="text-[24px] font-bold">GALLERY</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-          </div>
+          </a>
 
           {/* GitHub */}
-          <div className="absolute top-[212px] left-[372px] w-[256px] h-[120px] bg-[#323232] rounded-[24px] border-2 border-white/10 flex items-center justify-start gap-4 pl-[54px]">
+          <a href="https://github.com/elzastrelitzia" className="absolute top-[212px] left-[372px] w-[256px] h-[120px] bg-[#323232] rounded-[24px] border-2 border-white/10 flex items-center justify-start gap-4 pl-[54px] transition-colors hover:bg-[#3a3a3a]">
             <span className="text-[24px] font-bold">GITHUB</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-          </div>
+          </a>
 
           {/* Clock */}
           <div className="absolute top-[76px] left-[658px] w-[256px] h-[256px] bg-[#323232] rounded-[24px] border-2 border-white/10 flex items-center justify-center">
