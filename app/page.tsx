@@ -23,7 +23,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-[#404040] bg-[url('/bg.png')] bg-cover bg-center bg-no-repeat grayscale text-white flex items-center justify-center p-4">
+    <main className="min-h-screen bg-[#404040] bg-[url('/bg.jpg')] bg-cover bg-center bg-no-repeat grayscale text-white flex items-center justify-center p-4">
       <div className="w-full max-w-[1100px]">
         <div className="relative w-[1000px] h-[560px] scale-90 md:scale-100 lg:scale-110 origin-center">
           {/* Image */}
