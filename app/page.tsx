@@ -26,9 +26,7 @@ export default function Home() {
     <main className="min-h-screen bg-[#404040] text-white flex items-center justify-center p-4">
       <div className="w-full max-w-[1100px]">
         <div className="relative w-[1000px] h-[560px] scale-90 md:scale-100 lg:scale-110 origin-center">
-          {!expanded && (
-            <>
-              {/* Image */}
+          {/* Image */}
               <div className="absolute top-[76px] left-[86px] w-[256px] h-[256px] rounded-[24px] border-2 border-white/10 overflow-hidden">
                 <img src="/images/v308_3.png" alt="Profile" className="w-full h-full object-cover" />
               </div>
@@ -60,18 +58,15 @@ export default function Home() {
                   {time}
                 </span>
               </div>
-            </>
-          )}
-
           {/* About Me */}
           <button
             type="button"
             onClick={() => setExpanded((v) => !v)}
             aria-expanded={expanded}
-            className={`absolute bg-[#323232] rounded-[24px] border-2 border-white/10 overflow-hidden transition-all duration-300 ${
+            className={`absolute rounded-[24px] border-2 border-white/10 overflow-hidden transition-all duration-300 ${
               expanded
-                ? "top-0 left-0 w-[1000px] h-[560px] cursor-zoom-out"
-                : "top-[362px] left-[372px] w-[542px] h-[121px] cursor-zoom-in hover:bg-[#3a3a3a]"
+                ? "z-20 top-0 left-0 w-[1000px] h-[560px] bg-[#323232]/50 backdrop-blur-xl cursor-zoom-out"
+                : "z-10 top-[362px] left-[372px] w-[542px] h-[121px] bg-[#323232] cursor-zoom-in hover:bg-[#3a3a3a]"
             }`}
           >
             {expanded ? (
