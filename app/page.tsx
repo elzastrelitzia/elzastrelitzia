@@ -5,6 +5,28 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [time, setTime] = useState<string>("12 59");
   const [expanded, setExpanded] = useState(false);
+  const [closing, setClosing] = useState(false);
+
+  const toggleExpanded = () => {
+    if (!expanded) {
+      setExpanded(true);
+      return;
+    }
+    setClosing(true);
+    window.setTimeout(() => {
+      setExpanded(false);
+      setClosing(false);
+    }, 300);
+  };
+
+  useEffect(() => {
+    if (!expanded) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [expanded]);
 
   useEffect(() => {
     const updateTime = () => {
@@ -23,16 +45,17 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-[#404040] bg-[url('/bg.jpg')] bg-cover bg-center bg-no-repeat grayscale text-white flex items-center justify-center p-4">
+    <main className="relative min-h-screen bg-[#404040] text-white flex items-center justify-center p-4">
+      <div aria-hidden className="fixed inset-0 -z-10 bg-[url('/bg.jpg')] bg-cover bg-center bg-no-repeat grayscale" />
       <div className="w-full max-w-[1100px]">
-        <div className="relative w-[1000px] h-[560px] scale-90 md:scale-100 lg:scale-110 origin-center">
+        <div className="relative w-[1000px] h-[560px] scale-90 md:scale-100 lg:scale-110 origin-center max-md:w-full max-md:h-auto max-md:scale-100 max-md:transform-none max-md:flex max-md:flex-col max-md:gap-4">
           {/* Image */}
-              <div className="absolute fade-in top-[76px] left-[86px] w-[256px] h-[256px] rounded-[24px] border-2 border-white/10 overflow-hidden">
+              <div className="absolute fade-in top-[76px] left-[86px] w-[256px] h-[256px] rounded-[24px] border-2 border-white/10 overflow-hidden max-md:static max-md:w-full max-md:h-auto max-md:aspect-square">
                 <img src="/images/v308_3.png" alt="Profile" className="w-full h-full object-cover" />
               </div>
 
               {/* Quote */}
-              <div className="absolute fade-in top-[362px] left-[86px] w-[256px] h-[121px] bg-[#323232]/50 backdrop-blur-xl rounded-[24px] border-2 border-white/10 p-5">
+              <div className="absolute fade-in top-[362px] left-[86px] w-[256px] h-[121px] max-md:static max-md:w-full max-md:h-auto max-md:min-h-[140px] bg-[#323232]/50 backdrop-blur-xl rounded-[24px] border-2 border-white/10 p-5">
                 <span className="absolute fade-in top-3 left-4 text-[24px] font-bold">“</span>
                 <span className="block mt-6 text-[16px] font-bold leading-tight">
                   With great power<br />comes great responsibility.
@@ -41,36 +64,39 @@ export default function Home() {
               </div>
 
               {/* Gallery */}
-              <a href="" className="absolute fade-in top-[76px] left-[372px] w-[256px] h-[120px] bg-[#323232]/50 backdrop-blur-xl rounded-[24px] border-2 border-white/10 flex items-center justify-start gap-4 pl-[54px] transition-colors hover:bg-[#3a3a3a]">
+              <a href="" className="absolute fade-in top-[76px] left-[372px] w-[256px] h-[120px] max-md:static max-md:w-full bg-[#323232]/50 backdrop-blur-xl rounded-[24px] border-2 border-white/10 flex items-center justify-start gap-4 pl-[54px] transition-colors hover:bg-[#3a3a3a]">
                 <span className="text-[24px] font-bold">GALLERY</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
               </a>
 
               {/* GitHub */}
-              <a href="https://github.com/elzastrelitzia" className="absolute fade-in top-[212px] left-[372px] w-[256px] h-[120px] bg-[#323232]/50 backdrop-blur-xl rounded-[24px] border-2 border-white/10 flex items-center justify-start gap-4 pl-[54px] transition-colors hover:bg-[#3a3a3a]">
+              <a href="https://github.com/elzastrelitzia" className="absolute fade-in top-[212px] left-[372px] w-[256px] h-[120px] max-md:static max-md:w-full bg-[#323232]/50 backdrop-blur-xl rounded-[24px] border-2 border-white/10 flex items-center justify-start gap-4 pl-[54px] transition-colors hover:bg-[#3a3a3a]">
                 <span className="text-[24px] font-bold">GITHUB</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
               </a>
 
               {/* Clock */}
-              <div className="absolute fade-in top-[76px] left-[658px] w-[256px] h-[256px] bg-[#323232]/50 backdrop-blur-xl rounded-[24px] border-2 border-white/10 flex items-center justify-center">
-                <span className="block text-[128px] leading-none text-center -translate-y-[2.5%]" style={{ fontFamily: "NDot, sans-serif" }}>
+              <div className="absolute fade-in top-[76px] left-[658px] w-[256px] h-[256px] max-md:static max-md:w-full max-md:hidden bg-[#323232]/50 backdrop-blur-xl rounded-[24px] border-2 border-white/10 flex items-center justify-center">
+                <span className="block text-[128px] leading-none text-center -translate-y-[2.5%] max-md:text-[80px]" style={{ fontFamily: "NDot, sans-serif" }}>
                   {time}
                 </span>
               </div>
           {/* About Me */}
+          {expanded && (
+            <div aria-hidden className="hidden max-md:block max-md:fixed max-md:inset-0 max-md:z-40 max-md:bg-black/50" />
+          )}
           <button
             type="button"
-            onClick={() => setExpanded((v) => !v)}
+            onClick={toggleExpanded}
             aria-expanded={expanded}
-            className={`absolute fade-in rounded-[24px] border-2 border-white/10 overflow-hidden transition-all duration-300 ${
+            className={`absolute fade-in rounded-[24px] border-2 border-white/10 overflow-hidden transition-all duration-300 max-md:transition-none ${
               expanded
-                ? "z-20 top-0 left-0 w-[1000px] h-[560px] bg-[#323232]/50 backdrop-blur-xl cursor-pointer"
-                : "z-10 top-[362px] left-[372px] w-[542px] h-[121px] bg-[#323232]/50 backdrop-blur-xl cursor-pointer hover:bg-[#3a3a3a]"
+                ? `z-20 inset-0 bg-[#323232]/50 backdrop-blur-xl cursor-pointer max-md:fixed max-md:left-4 max-md:right-4 max-md:top-1/2 max-md:bottom-auto max-md:h-auto max-md:w-auto max-md:-translate-y-1/2 max-md:z-50 max-md:animate-[fadeIn_300ms_ease-out] max-md:transition-opacity max-md:duration-300 ${closing ? "max-md:opacity-0" : "max-md:opacity-100"}`
+                : "z-10 top-[362px] left-[372px] w-[542px] h-[121px] bg-[#323232]/50 backdrop-blur-xl cursor-pointer hover:bg-[#3a3a3a] max-md:static max-md:w-full"
             }`}
           >
             {expanded ? (
-              <span className="block w-full h-full p-12 text-left overflow-y-auto">
+              <span className="block w-full h-full p-12 text-left overflow-y-auto max-md:p-6">
                 <img src="/abme.svg" alt="About Me" className="w-[260px] h-auto mb-6" />
                 <span className="block text-[16px] leading-relaxed text-white/80 max-w-[760px]">
                   {/* ponytail: placeholder copy, replace with real About Me text */}
