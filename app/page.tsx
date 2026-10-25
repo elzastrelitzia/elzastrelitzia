@@ -54,7 +54,7 @@ export default function Home() {
 
               {/* Clock */}
               <div className="absolute fade-in top-[76px] left-[658px] w-[256px] h-[256px] bg-[#323232]/50 backdrop-blur-xl rounded-[24px] border-2 border-white/10 flex items-center justify-center">
-                <span className="text-[128px] font-bold leading-none text-center">
+                <span className="text-[128px] leading-none text-center" style={{ fontFamily: "NDot, sans-serif" }}>
                   {time}
                 </span>
               </div>
