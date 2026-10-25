@@ -47,7 +47,7 @@ export default function Home() {
   return (
     <main className="relative min-h-screen bg-[#404040] text-white flex items-center justify-center p-4">
       <div aria-hidden className="fixed inset-0 -z-10 bg-[url('/bg.jpg')] bg-cover bg-center bg-no-repeat grayscale" />
-      <div className="w-full max-w-[1100px]">
+      <div className="w-full max-w-[1220px] flex justify-center">
         <div className="relative w-[1000px] h-[560px] scale-90 md:scale-100 lg:scale-110 origin-center max-md:w-full max-md:h-auto max-md:scale-100 max-md:transform-none max-md:flex max-md:flex-col max-md:gap-4">
           {/* Image */}
               <div className="absolute fade-in top-[76px] left-[86px] w-[256px] h-[256px] rounded-[24px] border-2 border-white/10 overflow-hidden max-md:static max-md:w-full max-md:h-auto max-md:aspect-square">
