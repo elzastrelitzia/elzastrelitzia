@@ -23,7 +23,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-[#404040] text-white flex items-center justify-center p-4">
+    <main className="min-h-screen bg-[#404040] bg-[url('/bg.png')] bg-cover bg-center bg-no-repeat grayscale text-white flex items-center justify-center p-4">
       <div className="w-full max-w-[1100px]">
         <div className="relative w-[1000px] h-[560px] scale-90 md:scale-100 lg:scale-110 origin-center">
           {/* Image */}
@@ -65,8 +65,8 @@ export default function Home() {
             aria-expanded={expanded}
             className={`absolute rounded-[24px] border-2 border-white/10 overflow-hidden transition-all duration-300 ${
               expanded
-                ? "z-20 top-0 left-0 w-[1000px] h-[560px] bg-[#323232]/50 backdrop-blur-xl cursor-zoom-out"
-                : "z-10 top-[362px] left-[372px] w-[542px] h-[121px] bg-[#323232] cursor-zoom-in hover:bg-[#3a3a3a]"
+                ? "z-20 top-0 left-0 w-[1000px] h-[560px] bg-[#323232]/50 backdrop-blur-xl cursor-pointer"
+                : "z-10 top-[362px] left-[372px] w-[542px] h-[121px] bg-[#323232] cursor-pointer hover:bg-[#3a3a3a]"
             }`}
           >
             {expanded ? (
