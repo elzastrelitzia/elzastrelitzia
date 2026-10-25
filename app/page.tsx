@@ -23,8 +23,8 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#404040] text-white flex items-center justify-center p-4">
-      <div className="w-full max-w-[1000px]">
-        <div className="relative w-[1000px] h-[560px] scale-75 md:scale-90 lg:scale-100 origin-top-left md:origin-center">
+      <div className="w-full max-w-[1100px]">
+        <div className="relative w-[1000px] h-[560px] scale-90 md:scale-100 lg:scale-110 origin-center">
           {/* Image */}
           <div className="absolute top-[76px] left-[86px] w-[256px] h-[256px] rounded-[24px] overflow-hidden">
             <img src="/images/v308_3.png" alt="Profile" className="w-full h-full object-cover" />
