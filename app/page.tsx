@@ -1,4 +1,26 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 export default function Home() {
+  const [time, setTime] = useState<string>("12 59");
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const jakartaTime = new Intl.DateTimeFormat("en-US", {
+        timeZone: "Asia/Jakarta",
+        hour12: false,
+        hour: "2-digit",
+        minute: "2-digit",
+      }).format(now);
+      setTime(jakartaTime.replace(":", " "));
+    };
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <main className="min-h-screen bg-[#404040] text-white flex items-center justify-center p-4">
       <div className="w-full max-w-[1000px]">
@@ -38,7 +60,7 @@ export default function Home() {
           {/* Clock */}
           <div className="absolute top-[76px] left-[658px] w-[256px] h-[256px] bg-[#323232] rounded-[24px] flex items-center justify-center">
             <span className="text-[128px] font-bold leading-none text-center">
-              12<br />59
+              {time}
             </span>
           </div>
           
