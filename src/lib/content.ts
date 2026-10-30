@@ -49,12 +49,76 @@ export type GalleryItem = {
 };
 
 export const gallery: GalleryItem[] = [
-  { id: "untitled", alt: "Untitled study, 2026", width: 900, height: 1200 },
-  { id: "studio", alt: "Studio interior in morning light", width: 1000, height: 1000 },
-  { id: "paper", alt: "Paper study with folded forms", width: 1000, height: 1250 },
-  { id: "window", alt: "Window light across a wall", width: 1200, height: 800 },
-  { id: "grid", alt: "Notes on a grid system", width: 1000, height: 1250 },
-  { id: "dusk", alt: "Field at dusk", width: 1000, height: 1000 },
+  {
+    id: "21-savage",
+    alt: "21 Savage portrait artwork.",
+    width: 1050,
+    height: 1400,
+    src: "/gallery/21-savage.webp",
+  },
+  {
+    id: "234",
+    alt: "Cigarette pack poster study.",
+    width: 1050,
+    height: 1400,
+    src: "/gallery/234.webp",
+  },
+  {
+    id: "drifting-away",
+    alt: "Poster reading “Letting my soul take me away from the hurt and despair”.",
+    width: 1050,
+    height: 1400,
+    src: "/gallery/drifting-away.webp",
+  },
+  {
+    id: "hrc",
+    alt: "Honda Civic Type R HRC concept poster.",
+    width: 1400,
+    height: 933,
+    src: "/gallery/hrc.webp",
+  },
+  {
+    id: "better-to-be-hated",
+    alt: "Poster reading “It is better to be hated for what you are than to be loved for what you are not”.",
+    width: 1050,
+    height: 1400,
+    src: "/gallery/better-to-be-hated.webp",
+  },
+  {
+    id: "life-is-art",
+    alt: "Poster reading “Life is art, a miracle for all to see; I must tell you that you lived beautifully”.",
+    width: 1050,
+    height: 1400,
+    src: "/gallery/life-is-art.webp",
+  },
+  {
+    id: "bearbrand",
+    alt: "Bearbrand brand infographic.",
+    width: 1050,
+    height: 1400,
+    src: "/gallery/bearbrand.webp",
+  },
+  {
+    id: "cold-day-in-hell",
+    alt: "Poster reading “the past is a puzzle, like a broken mirror”.",
+    width: 1050,
+    height: 1400,
+    src: "/gallery/cold-day-in-hell.webp",
+  },
+  {
+    id: "lisa",
+    alt: "Employee of the Month poster.",
+    width: 1050,
+    height: 1400,
+    src: "/gallery/lisa.webp",
+  },
+  {
+    id: "redbull",
+    alt: "Red Bull poster study.",
+    width: 1400,
+    height: 525,
+    src: "/gallery/redbull.webp",
+  },
 ];
 
 export const about = {

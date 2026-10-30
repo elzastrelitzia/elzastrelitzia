@@ -53,6 +53,12 @@
     color: var(--paper);
   }
 
+  img {
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
+
   :focus-visible {
     outline: 2px solid var(--ink);
     outline-offset: 3px;
