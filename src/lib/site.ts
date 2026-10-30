@@ -8,6 +8,7 @@ export const site = {
   name: "elza strelitzia",
   handle: "elz ★",
   email: "elzax64@gmail.com",
+  telegram: "https://web.telegram.org/k/#@strelitzia77",
   title: "elz ★ — elza strelitzia",
   description:
     "Portfolio and playground of elza strelitzia. Type, interfaces, and quiet experiments on the web.",
