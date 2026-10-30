@@ -4,7 +4,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="flex h-[calc(100svh-var(--header-height)-var(--footer-height))] flex-col justify-center px-[var(--gutter)]"
+      className="flex h-[100svh] flex-col justify-center px-[var(--gutter)] pb-[var(--footer-height)] pt-[var(--header-height)]"
     >
       <h1 className="sr-only">{site.name}</h1>
 

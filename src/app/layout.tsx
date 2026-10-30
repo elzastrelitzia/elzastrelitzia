@@ -56,12 +56,7 @@ export default function RootLayout({
 
         <SiteHeader />
 
-        <main
-          id="main"
-          className="pb-[var(--footer-height)] pt-[var(--header-height)]"
-        >
-          {children}
-        </main>
+        <main id="main">{children}</main>
 
         <SiteFooter />
       </body>
