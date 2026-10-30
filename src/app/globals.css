@@ -1,14 +1,25 @@
 @import "tailwindcss";
 
-@theme {
-  --color-paper: #f5f4f0;
-  --color-ink: #1a1a1a;
-  --color-muted: #6f6d68;
-  --color-line: #d9d9d9;
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
+  color-scheme: light dark;
+
+  --paper: #f5f4f0;
+  --paper: light-dark(#f5f4f0, #131313);
+  --ink: #1a1a1a;
+  --ink: light-dark(#1a1a1a, #f0eee9);
+  --muted: #6f6d68;
+  --muted: light-dark(#6f6d68, #9c9992);
+  --line: #d9d9d9;
+  --line: light-dark(#d9d9d9, #2e2d2b);
+
   --step--1: clamp(0.78rem, 0.75rem + 0.15vw, 0.85rem);
   --step-0: 1rem;
   --step-1: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
@@ -26,8 +37,8 @@
 
 @layer base {
   html {
-    background-color: var(--color-paper);
-    color: var(--color-ink);
+    background-color: var(--paper);
+    color: var(--ink);
     -webkit-font-smoothing: antialiased;
   }
 
@@ -38,12 +49,12 @@
   }
 
   ::selection {
-    background-color: var(--color-ink);
-    color: var(--color-paper);
+    background-color: var(--ink);
+    color: var(--paper);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-ink);
+    outline: 2px solid var(--ink);
     outline-offset: 3px;
   }
 
