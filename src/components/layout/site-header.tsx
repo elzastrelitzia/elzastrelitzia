@@ -51,7 +51,7 @@ export function SiteHeader() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div
-        className={`relative z-50 flex h-[var(--header-height)] items-center justify-between gap-6 border-b bg-paper px-[var(--gutter)] ${
+        className={`relative z-50 flex h-[var(--header-height)] items-center justify-between gap-6 border-b bg-paper/50 backdrop-blur-2xl px-[var(--gutter)] ${
           scrolled ? "border-line" : "border-transparent"
         }`}
       >
