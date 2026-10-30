@@ -6,9 +6,10 @@ import { site } from "@/lib/site";
 type MobileNavProps = {
   open: boolean;
   onClose: () => void;
+  active: string | null;
 };
 
-export function MobileNav({ open, onClose }: MobileNavProps) {
+export function MobileNav({ open, onClose, active }: MobileNavProps) {
   useEffect(() => {
     if (!open) return;
 
@@ -62,7 +63,10 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
               <a
                 href={item.href}
                 onClick={onClose}
-                className="text-[clamp(2rem,10vw,3.5rem)] uppercase leading-none tracking-tight"
+                aria-current={active === item.id ? "page" : undefined}
+                className={`text-[clamp(2rem,10vw,3.5rem)] uppercase leading-none tracking-tight underline-offset-8 decoration-1 ${
+                  active === item.id ? "underline" : ""
+                }`}
               >
                 {item.label}
               </a>

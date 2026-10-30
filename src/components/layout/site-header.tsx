@@ -6,6 +6,7 @@ import { MobileNav } from "./mobile-nav";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
@@ -14,6 +15,32 @@ export function SiteHeader() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const ids = site.nav.map((item) => item.id);
+    const nodes = ids
+      .map((id) => document.getElementById(id))
+      .filter((node): node is HTMLElement => node !== null);
+    if (!nodes.length) return;
+
+    const visible = new Set<string>();
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) visible.add(entry.target.id);
+          else visible.delete(entry.target.id);
+        }
+
+        setActive(ids.find((id) => visible.has(id)) ?? null);
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 },
+    );
+
+    nodes.forEach((node) => observer.observe(node));
+
+    return () => observer.disconnect();
   }, []);
 
   const close = useCallback(() => {
@@ -39,7 +66,12 @@ export function SiteHeader() {
               <li key={item.id}>
                 <a
                   href={item.href}
-                  className="text-[var(--step--1)] uppercase tracking-[0.18em] underline-offset-8 hover:underline"
+                  aria-current={active === item.id ? "page" : undefined}
+                  className={`text-[var(--step--1)] uppercase tracking-[0.18em] underline-offset-8 transition-colors ${
+                    active === item.id
+                      ? "text-ink underline"
+                      : "text-muted hover:text-ink hover:underline"
+                  }`}
                 >
                   {item.label}
                 </a>
@@ -60,7 +92,7 @@ export function SiteHeader() {
         </button>
       </div>
 
-      <MobileNav open={open} onClose={close} />
+      <MobileNav open={open} onClose={close} active={active} />
     </header>
   );
 }
