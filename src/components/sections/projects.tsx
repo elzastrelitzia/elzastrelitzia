@@ -21,7 +21,7 @@ export function Projects() {
           role="region"
           aria-label="Project list"
           tabIndex={0}
-          className="min-h-0 md:flex-1 md:overflow-y-auto md:overscroll-contain md:[scrollbar-gutter:stable]"
+          className="min-h-0 md:flex-1 md:overflow-y-auto md:overscroll-contain md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden"
         >
           <ol className="border-b border-line">
             {projects.map((project, index) => (
