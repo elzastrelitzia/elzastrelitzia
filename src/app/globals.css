@@ -64,6 +64,7 @@
 
 .hero-mark {
   width: min(100%, 58rem);
+  max-height: 30svh;
   aspect-ratio: 1024.92 / 474.1;
   background-color: currentColor;
   -webkit-mask-image: url("/hero.svg");
