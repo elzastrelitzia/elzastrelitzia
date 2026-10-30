@@ -60,3 +60,13 @@ export const gallery: GalleryItem[] = [
   { id: "grid", alt: "Notes on a grid system", width: 1000, height: 1250 },
   { id: "dusk", alt: "Field at dusk", width: 1000, height: 1000 },
 ];
+
+export const about = {
+  statement:
+    "Hi, I am a software engineer interested in graphic design, UI/UX, web, and video. I build mobile and desktop applications, plus systems on IoT and microcontrollers like ESP32 and Arduino.",
+  meta: [
+    { label: "Based", value: "Indonesia" },
+    { label: "Focus", value: "Software, interface, IoT" },
+    { label: "Tools", value: "FigCraft, FilmCraft, PhotoCraft, Zed, Vim, Etc." },
+  ],
+};
