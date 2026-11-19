@@ -38,6 +38,7 @@ export function GalleryItem({ item }: GalleryItemProps) {
             src={item.src}
             alt={item.alt}
             sizes="(min-width: 1024px) 33vw, 50vw"
+            loading="lazy"
             className="h-full w-full object-cover transition-opacity motion-safe:hover:opacity-90"
           />
         ) : null}
