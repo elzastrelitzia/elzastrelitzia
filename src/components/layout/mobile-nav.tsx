@@ -48,7 +48,7 @@ export function MobileNav({ open, onClose, active }: MobileNavProps) {
       onClick={(event) => {
         if (event.target === event.currentTarget) onClose();
       }}
-      className="fixed inset-0 z-40 flex flex-col justify-between overflow-y-auto bg-paper px-[var(--gutter)] pb-8 pt-[calc(var(--header-height)+2rem)] md:hidden"
+      className="fixed inset-0 z-40 flex flex-col justify-between overflow-y-auto bg-paper/90 backdrop-blur-xl px-[var(--gutter)] pb-8 pt-[calc(var(--header-height)+2rem)] md:hidden"
     >
       <nav aria-label="Sections">
         <ul>
