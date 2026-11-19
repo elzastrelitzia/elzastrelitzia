@@ -15,7 +15,13 @@ export function Gallery() {
     fetch("/api/gallery")
       .then((res) => res.json())
       .then((data) => {
-        if (!cancelled) setItems(data);
+        if (cancelled) return;
+        const shuffled = [...data];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        if (!cancelled) setItems(shuffled);
         setLoading(false);
       });
     return () => {
