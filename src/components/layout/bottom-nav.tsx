@@ -16,7 +16,7 @@ export function BottomNav({
 }) {
   return (
     <nav
-      className={`fixed bottom-0 left-1/2 -translate-x-1/2 md:hidden z-[60] ${className ?? ""}`}
+      className={`fixed bottom-0 left-1/2 -translate-x-1/2 lg:hidden z-[60] ${className ?? ""}`}
     >
       <div className="rounded-full bg-paper/50 shadow-[0_0_30px_1px_rgba(0,0,0,0.8)] backdrop-blur-xl border-t border-white/30 mb-8 px-3 py-3 relative flex items-center justify-center gap-2">
         {navItems.map((item) => {

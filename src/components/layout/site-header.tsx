@@ -41,7 +41,7 @@ export function SiteHeader({ className }: { className?: string }) {
           <span className="sr-only">{site.handle}, back to top</span>
         </a>
 
-        <nav aria-label="Sections" className="hidden md:block">
+        <nav aria-label="Sections" className="hidden lg:block">
           <ul className="flex items-center gap-8">
             <li>
               <a
@@ -61,7 +61,7 @@ export function SiteHeader({ className }: { className?: string }) {
 
         <a
           onClick={toggleSection}
-          className="text-[var(--step--1)] uppercase tracking-[0.18em] md:hidden"
+          className="text-[var(--step--1)] uppercase tracking-[0.18em] hidden"
         >
           {section === "gallery" ? "Home" : "Gallery"}
         </a>
