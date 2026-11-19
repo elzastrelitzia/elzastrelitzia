@@ -67,7 +67,7 @@ export function Gallery() {
             role="region"
             aria-label="Gallery"
             tabIndex={0}
-            className="md:h-full md:overflow-y-auto md:overscroll-contain md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden"
+            className="md:h-full md:overflow-y-auto md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden"
           >
             <ul className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 2xl:columns-6 3xl:columns-7 4xl:columns-8 gap-4">
               {items.map((item) => (
