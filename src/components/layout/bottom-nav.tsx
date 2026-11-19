@@ -17,7 +17,7 @@ export function BottomNav({ className }: { className?: string }) {
     <nav
       className={`fixed bottom-0 left-1/2 -translate-x-1/2 md:hidden z-[60] ${className ?? ""}`}
     >
-      <div className="rounded-full bg-paper mb-8 px-3 py-3 relative flex items-center justify-center gap-2">
+      <div className="rounded-full bg-paper/50 backdrop-blur-xl border-t border-white/30 mb-8 px-3 py-3 relative flex items-center justify-center gap-2">
         {navItems.map((item) => {
           const active = activeId === item.id;
           return (
