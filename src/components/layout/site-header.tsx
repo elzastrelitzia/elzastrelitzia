@@ -1,13 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 import { site } from "@/lib/site";
+import { useSection } from "@/components/layout/section-provider";
 
 export function SiteHeader({ className }: { className?: string }) {
   const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname();
-  const onGallery = pathname === "/gallery" || pathname.startsWith("/gallery/");
+  const { section, setSection } = useSection();
+
+  const toggleSection = (e?: React.MouseEvent) => {
+    e?.preventDefault();
+    setSection(section === "home" ? "gallery" : "home");
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -41,23 +45,25 @@ export function SiteHeader({ className }: { className?: string }) {
           <ul className="flex items-center gap-8">
             <li>
               <a
-                href={onGallery ? "/" : "/gallery"}
-                aria-current={onGallery ? "page" : undefined}
+                onClick={toggleSection}
+                aria-current={section === "gallery" ? "page" : undefined}
                 className={`text-[var(--step--1)] uppercase tracking-[0.18em] underline-offset-8 transition-colors ${
-                  onGallery ? "text-ink underline" : "text-muted hover:text-ink hover:underline"
+                  section === "gallery"
+                    ? "text-ink underline"
+                    : "text-muted hover:text-ink hover:underline"
                 }`}
               >
-                {onGallery ? "Back to home" : "Gallery"}
+                {section === "gallery" ? "Home" : "Gallery"}
               </a>
             </li>
           </ul>
         </nav>
 
         <a
-          href="/gallery"
+          onClick={toggleSection}
           className="text-[var(--step--1)] uppercase tracking-[0.18em] md:hidden"
         >
-          Gallery
+          {section === "gallery" ? "Home" : "Gallery"}
         </a>
       </div>
     </header>

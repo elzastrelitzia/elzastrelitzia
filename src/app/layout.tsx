@@ -3,6 +3,9 @@ import type { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { SectionProvider } from "@/components/layout/section-provider";
+import { Shell } from "@/components/layout/shell";
+import { getGalleryItems } from "@/lib/gallery";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -44,6 +47,8 @@ export const viewport: Viewport = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
+  const items = getGalleryItems();
+
   return (
     <html lang="en" className={`${inter.variable} h-full md:overflow-y-auto`}>
       <body className="min-h-full md:overflow-y-auto">
@@ -54,9 +59,10 @@ export default function RootLayout({
           Skip to content
         </a>
 
-        <SiteHeader className="hidden md:block" />
-
-        {children}
+        <SectionProvider>
+          <SiteHeader />
+          <Shell items={items} />
+        </SectionProvider>
 
         <SiteFooter />
       </body>

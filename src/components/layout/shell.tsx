@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-
+import { useSection } from "@/components/layout/section-provider";
 import Gallery from "@/components/sections/gallery";
 import { BottomNav } from "@/components/layout/bottom-nav";
 import { PageTransition } from "@/components/layout/page-transition";
@@ -13,10 +12,11 @@ type ShellProps = {
 };
 
 export function Shell({ items }: ShellProps) {
-  const [section, setSection] = useState<"home" | "gallery">("home");
+  const { section, setSection } = useSection();
 
   return (
     <>
+      <BottomNav section={section} onSectionChange={setSection} />
       <PageTransition section={section}>
         <>
           <Hero />
@@ -24,7 +24,6 @@ export function Shell({ items }: ShellProps) {
         </>
         <Gallery items={items} />
       </PageTransition>
-      <BottomNav section={section} onSectionChange={setSection} />
     </>
   );
 }
