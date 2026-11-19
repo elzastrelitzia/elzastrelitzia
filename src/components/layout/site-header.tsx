@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { site } from "@/lib/site";
 
-export function SiteHeader() {
+export function SiteHeader({ className }: { className?: string }) {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const onGallery = pathname === "/gallery" || pathname.startsWith("/gallery/");
@@ -26,7 +26,7 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
+    <header className={`fixed inset-x-0 top-0 z-50 ${className}`}>
       <div
         className={`relative z-50 flex h-[var(--header-height)] items-center justify-between gap-6 border-b bg-paper/50 backdrop-blur-2xl px-[var(--gutter)] ${
           scrolled ? "border-line" : "border-transparent"
