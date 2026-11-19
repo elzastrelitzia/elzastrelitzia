@@ -35,7 +35,7 @@ export function Gallery() {
               <span className="text-muted">Loading gallery…</span>
             </div>
           ) : (
-            <ul className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 2xl:columns-6 3xl:columns-7 4xl:columns-8 gap-4">
+            <ul className="columns-2 sm:columns-3 md:columns-4 lg:columns-5 xl:columns-6 2xl:columns-7 3xl:columns-8 4xl:columns-8 gap-4">
               {items.map((item) => (
                 <GalleryItem key={item.id} item={item} />
               ))}
