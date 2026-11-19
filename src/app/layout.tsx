@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { SmoothScroll } from "@/components/layout/scroll-smooth";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -45,8 +46,8 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full`}>
-      <body className="min-h-full">
+    <html lang="en" className={`${inter.variable} h-full md:overflow-hidden`}>
+      <body className="min-h-full md:overflow-hidden">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"
@@ -56,7 +57,7 @@ export default function RootLayout({
 
         <SiteHeader />
 
-        <main id="main">{children}</main>
+        <SmoothScroll>{children}</SmoothScroll>
 
         <SiteFooter />
       </body>

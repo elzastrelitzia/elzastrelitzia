@@ -65,6 +65,7 @@ export function Projects() {
             if (active) place(event.clientX, event.clientY);
           }}
           onMouseLeave={() => setActive(null)}
+          onWheel={(event) => event.stopPropagation()}
           className="min-h-0 md:flex-1 md:overflow-y-auto md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden"
         >
           <ol className="border-b border-line">
