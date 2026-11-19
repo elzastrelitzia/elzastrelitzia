@@ -58,7 +58,7 @@ export function Gallery() {
             tabIndex={0}
             className="md:h-full md:overflow-y-auto md:overscroll-contain md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden"
           >
-            <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7 4xl:grid-cols-8 gap-4">
+            <ul className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 2xl:columns-6 3xl:columns-7 4xl:columns-8 gap-4">
               {gallery.map((item) => (
                 <GalleryItem key={item.id} item={item} />
               ))}

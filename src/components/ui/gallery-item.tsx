@@ -25,7 +25,7 @@ export function GalleryItem({ item }: GalleryItemProps) {
             width={item.width}
             height={item.height}
             draggable={false}
-            sizes="(min-width: 1280px) 20vw, (min-width: 1024px) 25vw, 50vw"
+            sizes="(min-width: 1024px) 33vw, 50vw"
             className="h-full w-full object-cover transition-opacity motion-safe:hover:opacity-90"
           />
         ) : null}
