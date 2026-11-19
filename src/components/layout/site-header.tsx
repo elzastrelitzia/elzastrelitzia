@@ -1,15 +1,11 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { site } from "@/lib/site";
-import { MobileNav } from "./mobile-nav";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState<string | null>(null);
-  const [open, setOpen] = useState(false);
-  const triggerRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
   const onGallery = pathname === "/gallery" || pathname.startsWith("/gallery/");
 
@@ -18,37 +14,6 @@ export function SiteHeader() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    const ids = site.nav.map((item) => item.id);
-    const nodes = ids
-      .map((id) => document.getElementById(id))
-      .filter((node): node is HTMLElement => node !== null);
-    if (!nodes.length) return;
-
-    const visible = new Set<string>();
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) visible.add(entry.target.id);
-          else visible.delete(entry.target.id);
-        }
-
-        setActive(ids.find((id) => visible.has(id)) ?? null);
-      },
-      { rootMargin: "-45% 0px -50% 0px", threshold: 0 },
-    );
-
-    nodes.forEach((node) => observer.observe(node));
-
-    return () => observer.disconnect();
-  }, []);
-
-  const close = useCallback(() => {
-    setOpen(false);
-    triggerRef.current?.focus();
   }, []);
 
   return (
@@ -79,19 +44,13 @@ export function SiteHeader() {
           </ul>
         </nav>
 
-        <button
-          ref={triggerRef}
-          type="button"
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          onClick={() => (open ? close() : setOpen(true))}
+        <a
+          href="/gallery"
           className="text-[var(--step--1)] uppercase tracking-[0.18em] md:hidden"
         >
-          {open ? "Close" : "Menu"}
-        </button>
+          Gallery
+        </a>
       </div>
-
-      <MobileNav open={open} onClose={close} active={active} />
     </header>
   );
 }
