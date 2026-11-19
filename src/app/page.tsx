@@ -1,11 +1,7 @@
-import { Hero } from "@/components/sections/hero";
-import { Projects } from "@/components/sections/projects";
+import { getGalleryItems } from "@/lib/gallery";
+import { Shell } from "@/components/layout/shell";
 
-export default function Home() {
-  return (
-    <>
-      <Hero />
-      <Projects />
-    </>
-  );
+export default async function Home() {
+  const items = getGalleryItems();
+  return <Shell items={items} />;
 }

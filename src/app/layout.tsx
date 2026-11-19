@@ -4,7 +4,6 @@ import { Inter } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { LenisScroll } from "@/components/layout/lenis-scroll";
-import { BottomNav } from "@/components/layout/bottom-nav";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -59,8 +58,6 @@ export default function RootLayout({
         <SiteHeader className="hidden md:block" />
 
         <LenisScroll>{children}</LenisScroll>
-
-        <BottomNav className="md:hidden" />
 
         <SiteFooter />
       </body>

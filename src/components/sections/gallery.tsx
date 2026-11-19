@@ -1,37 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 import { GalleryItem } from "@/components/ui/gallery-item";
 
-export function Gallery() {
-  const [items, setItems] = useState<{ id: string; alt: string; src: string; w?: number; h?: number }[]>(
-    [],
-  );
-
-  useEffect(() => {
-    let cancelled = false;
-    fetch("/api/gallery")
-      .then((res) => res.json())
-      .then(async (data) => {
-        if (cancelled) return;
-        await new Promise((resolve) => setTimeout(resolve, 500));
-        if (cancelled) return;
-        const shuffled = [...data];
-        for (let i = shuffled.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-        }
-        if (!cancelled) setItems(shuffled);
-      })
-      .catch(() => {
-        if (cancelled) return;
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
+export default function Gallery({
+  items,
+}: {
+  items: { id: string; alt: string; src: string; w?: number; h?: number }[];
+}) {
   return (
     <section
       id="gallery"
