@@ -3,11 +3,22 @@
 import { useEffect, useRef, useState } from "react";
 
 import { GalleryItem } from "@/components/ui/gallery-item";
-import { gallery } from "@/lib/content";
+import { gallery, type GalleryItem as GalleryEntry } from "@/lib/content";
 
 export function Gallery() {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [edges, setEdges] = useState({ top: false, bottom: false });
+  const [items, setItems] = useState<GalleryEntry[]>(gallery);
+
+  useEffect(() => {
+    const shuffled = [...gallery];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setItems(shuffled);
+  }, []);
 
   useEffect(() => {
     const scroller = scrollerRef.current;
@@ -59,7 +70,7 @@ export function Gallery() {
             className="md:h-full md:overflow-y-auto md:overscroll-contain md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden"
           >
             <ul className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 2xl:columns-6 3xl:columns-7 4xl:columns-8 gap-4">
-              {gallery.map((item) => (
+              {items.map((item) => (
                 <GalleryItem key={item.id} item={item} />
               ))}
             </ul>
