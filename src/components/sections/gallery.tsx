@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { GalleryItem } from "@/components/ui/gallery-item";
-import { gallery, type GalleryItem as GalleryEntry } from "@/lib/content";
+import { gallery, type GalleryEntry } from "@/lib/gallery.gen";
 
 export function Gallery() {
   const scrollerRef = useRef<HTMLDivElement>(null);
