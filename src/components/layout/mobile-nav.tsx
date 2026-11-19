@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { site } from "@/lib/site";
 
 type MobileNavProps = {
@@ -9,7 +10,10 @@ type MobileNavProps = {
   active: string | null;
 };
 
-export function MobileNav({ open, onClose, active }: MobileNavProps) {
+export function MobileNav({ open, onClose, active: _active }: MobileNavProps) {
+  const pathname = usePathname();
+  const onGallery = pathname === "/gallery" || pathname.startsWith("/gallery/");
+
   useEffect(() => {
     if (!open) return;
 
@@ -52,26 +56,23 @@ export function MobileNav({ open, onClose, active }: MobileNavProps) {
     >
       <nav aria-label="Sections">
         <ul>
-          {site.nav.map((item, index) => (
-            <li
-              key={item.id}
-              className="flex items-baseline gap-4 border-b border-line py-4"
+          <li
+            className="flex items-baseline gap-4 border-b border-line py-4"
+          >
+            <span className="text-[var(--step--1)] tabular-nums text-muted">
+              01
+            </span>
+            <a
+              href={onGallery ? "/" : "/gallery"}
+              onClick={onClose}
+              aria-current={onGallery ? "page" : undefined}
+              className={`text-[clamp(2rem,10vw,3.5rem)] uppercase leading-none tracking-tight underline-offset-8 decoration-1 ${
+                onGallery ? "text-ink underline" : "text-muted hover:text-ink hover:underline"
+              }`}
             >
-              <span className="text-[var(--step--1)] tabular-nums text-muted">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <a
-                href={item.href}
-                onClick={onClose}
-                aria-current={active === item.id ? "page" : undefined}
-                className={`text-[clamp(2rem,10vw,3.5rem)] uppercase leading-none tracking-tight underline-offset-8 decoration-1 ${
-                  active === item.id ? "underline" : ""
-                }`}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
+              {onGallery ? "Back to home" : "Gallery"}
+            </a>
+          </li>
         </ul>
       </nav>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { site } from "@/lib/site";
 import { MobileNav } from "./mobile-nav";
 
@@ -9,6 +10,8 @@ export function SiteHeader() {
   const [active, setActive] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const pathname = usePathname();
+  const onGallery = pathname === "/gallery" || pathname.startsWith("/gallery/");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -62,21 +65,17 @@ export function SiteHeader() {
 
         <nav aria-label="Sections" className="hidden md:block">
           <ul className="flex items-center gap-8">
-            {site.nav.map((item) => (
-              <li key={item.id}>
-                <a
-                  href={item.href}
-                  aria-current={active === item.id ? "page" : undefined}
-                  className={`text-[var(--step--1)] uppercase tracking-[0.18em] underline-offset-8 transition-colors ${
-                    active === item.id
-                      ? "text-ink underline"
-                      : "text-muted hover:text-ink hover:underline"
-                  }`}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
+            <li>
+              <a
+                href={onGallery ? "/" : "/gallery"}
+                aria-current={onGallery ? "page" : undefined}
+                className={`text-[var(--step--1)] uppercase tracking-[0.18em] underline-offset-8 transition-colors ${
+                  onGallery ? "text-ink underline" : "text-muted hover:text-ink hover:underline"
+                }`}
+              >
+                {onGallery ? "Back to home" : "Gallery"}
+              </a>
+            </li>
           </ul>
         </nav>
 
