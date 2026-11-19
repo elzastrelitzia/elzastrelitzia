@@ -17,9 +17,9 @@ export const site = {
     cta: "Projects",
   },
   nav: [
-    { id: "projects", label: "Project", href: "#projects" },
-    { id: "gallery", label: "Gallery", href: "#gallery" },
-    { id: "about", label: "About", href: "#about" },
-    { id: "contact", label: "Contact", href: "#contact" },
+    { id: "projects", label: "Project", href: "/#projects" },
+    { id: "gallery", label: "Gallery", href: "/gallery" },
+    { id: "about", label: "About", href: "/#about" },
+    { id: "contact", label: "Contact", href: "/#contact" },
   ] satisfies NavItem[],
 };
