@@ -5,10 +5,9 @@ import { useEffect, useState } from "react";
 import { GalleryItem } from "@/components/ui/gallery-item";
 
 export function Gallery() {
-  const [items, setItems] = useState<{ id: string; alt: string; src: string }[]>(
+  const [items, setItems] = useState<{ id: string; alt: string; src: string; w?: number; h?: number }[]>(
     [],
   );
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let cancelled = false;
@@ -24,10 +23,9 @@ export function Gallery() {
           [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
         }
         if (!cancelled) setItems(shuffled);
-        setLoading(false);
       })
       .catch(() => {
-        if (!cancelled) setLoading(false);
+        if (cancelled) return;
       });
     return () => {
       cancelled = true;
@@ -42,7 +40,7 @@ export function Gallery() {
       <div className="mx-auto flex flex-col px-[var(--gutter)]">
         <div className="relative min-h-0">
           <ul className="columns-2 sm:columns-3 md:columns-4 lg:columns-5 xl:columns-6 2xl:columns-7 3xl:columns-8 4xl:columns-8 gap-4">
-            {loading ? null : items.map((item) => (
+            {items.map((item) => (
               <GalleryItem key={item.id} item={item} />
             ))}
           </ul>
