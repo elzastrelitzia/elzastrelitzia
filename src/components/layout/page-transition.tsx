@@ -13,7 +13,7 @@ export function PageTransition({
   const galleryTransform = section === "gallery" ? "translateX(0)" : "translateX(100%)";
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
+    <div className="relative min-h-screen">
       <div
         className="absolute inset-0 w-full h-full overflow-y-auto overflow-x-hidden transition-transform duration-300 ease-in-out"
         style={{ transform: homeTransform }}
