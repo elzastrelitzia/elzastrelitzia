@@ -106,7 +106,7 @@ export function Contact() {
       id="contact"
       className="scroll-mt-[var(--header-height)] px-[var(--gutter)] pb-[var(--footer-height)] pt-[var(--header-height)] md:h-[100svh]"
     >
-      <div className="mx-auto flex h-full max-w-[var(--max-width)] flex-col">
+      <div className="mx-auto flex h-full flex-col">
         <div className="flex shrink-0 items-baseline justify-between gap-6 py-8">
           <h2 className="text-[var(--step--1)] uppercase tracking-[0.18em] text-muted">
             Contact

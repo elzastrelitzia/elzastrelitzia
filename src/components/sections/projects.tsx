@@ -46,7 +46,7 @@ export function Projects() {
     >
       <div
         ref={panelRef}
-        className="relative mx-auto flex max-w-[var(--max-width)] flex-col px-[var(--gutter)] md:h-full"
+        className="relative mx-auto flex flex-col px-[var(--gutter)] md:h-full"
       >
         <div className="flex shrink-0 items-baseline justify-between gap-6 py-8">
           <h2 className="text-[var(--step--1)] uppercase tracking-[0.18em] text-muted">
