@@ -10,32 +10,32 @@ export function Hero() {
       <div
         className="grid grid-cols-1 md:grid-cols-2 gap-[var(--gutter)] w-full mx-auto md:max-w-[calc(var(--max-width)+var(--gutter)*2)]"
       >
-        <div className="flex flex-col gap-[var(--gutter)] py-8 md:py-0">
+        <div className="flex flex-col gap-6 py-4 md:gap-[var(--gutter)] md:py-0">
           <h1 className="sr-only">{site.name}</h1>
 
           <div
             role="img"
             aria-label="elz, star"
-            className="hero-mark mx-auto md:mx-0 text-ink max-h-none"
+            className="hero-mark mx-auto md:mx-0 text-ink max-h-[18rem]"
           />
 
-          <p className="hero-copy mx-auto mt-10 max-w-[var(--measure)] text-center text-[var(--step-1)] leading-snug text-muted md:text-left md:mt-0">
+          <p className="hero-copy mx-auto mt-8 max-w-[var(--measure)] text-center text-[var(--step-1)] leading-snug text-muted md:text-left md:mt-0">
             {site.hero.line}
           </p>
 
           <a
             href="#projects"
-            className="hero-cue mx-auto mt-12 inline-flex items-center gap-2 text-[var(--step--1)] uppercase tracking-[0.18em] underline-offset-8 hover:underline md:mx-0 md:mt-0"
+            className="hero-cue mx-auto mt-10 inline-flex items-center gap-2 text-[var(--step--1)] uppercase tracking-[0.18em] underline-offset-8 hover:underline md:mx-0 md:mt-0"
           >
             {site.hero.cta}
             <span aria-hidden="true">↓</span>
           </a>
         </div>
 
-        <div className="flex flex-col gap-[var(--gutter)] py-8 md:py-0">
+        <div className="flex flex-col gap-6 py-4 md:gap-[var(--gutter)] md:py-0">
           <section
             id="about"
-            className="scroll-mt-[var(--header-height)] flex flex-col justify-center gap-4 py-8 rounded-xl border border-line bg-paper/50 backdrop-blur-sm p-[var(--gutter)]"
+            className="scroll-mt-[var(--header-height)] flex flex-col justify-center gap-4 py-4 md:py-8 rounded-xl border border-line bg-paper/50 backdrop-blur-sm p-[var(--gutter)]"
           >
             <h2 className="text-[var(--step--1)] uppercase tracking-[0.18em] text-muted">
               About
@@ -46,7 +46,7 @@ export function Hero() {
           </section>
           <section
             id="contact"
-            className="scroll-mt-[var(--header-height)] flex flex-col justify-center gap-4 py-8 rounded-xl border border-line bg-paper/50 backdrop-blur-sm p-[var(--gutter)]"
+            className="scroll-mt-[var(--header-height)] flex flex-col justify-center gap-4 py-4 md:py-8 rounded-xl border border-line bg-paper/50 backdrop-blur-sm p-[var(--gutter)]"
           >
             <h2 className="text-[var(--step--1)] uppercase tracking-[0.18em] text-muted">
               Contact
