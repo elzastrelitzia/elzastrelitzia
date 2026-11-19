@@ -1,16 +1,14 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { GalleryItem } from "@/components/ui/gallery-item";
 
 export function Gallery() {
-  const scrollerRef = useRef<HTMLDivElement>(null);
   const [items, setItems] = useState<{ id: string; alt: string; src: string }[]>(
     [],
   );
   const [loading, setLoading] = useState(true);
-  const [edges, setEdges] = useState({ top: false, bottom: false });
 
   useEffect(() => {
     let cancelled = false;
@@ -25,72 +23,24 @@ export function Gallery() {
     };
   }, []);
 
-  useEffect(() => {
-    const scroller = scrollerRef.current;
-    if (!scroller) return;
-
-    const update = () => {
-      setEdges({
-        top: scroller.scrollTop > 8,
-        bottom:
-          scroller.scrollTop + scroller.clientHeight <
-          scroller.scrollHeight - 8,
-      });
-    };
-
-    update();
-    scroller.addEventListener("scroll", update, { passive: true });
-    const observer = new ResizeObserver(update);
-    observer.observe(scroller);
-    if (scroller.firstElementChild) observer.observe(scroller.firstElementChild);
-
-    return () => {
-      scroller.removeEventListener("scroll", update);
-      observer.disconnect();
-    };
-  }, []);
-
   return (
     <section
       id="gallery"
-      className="pb-[var(--footer-height)] pt-[var(--header-height)] md:h-[100svh]"
+      className="pb-[var(--footer-height)] pt-[var(--header-height)]"
     >
-      <div className="mx-auto flex flex-col px-[var(--gutter)] md:h-full">
-        <div className="relative min-h-0 md:flex-1">
-          <div
-            ref={scrollerRef}
-            role="region"
-            aria-label="Gallery"
-            tabIndex={0}
-            onWheel={(event) => event.stopPropagation()}
-            className="md:h-full md:overflow-y-auto md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden"
-          >
-            {loading ? (
-              <div className="animate-pulse flex min-h-[300px] items-center justify-center">
-                <span className="text-muted">Loading gallery…</span>
-              </div>
-            ) : (
-              <ul className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 2xl:columns-6 3xl:columns-7 4xl:columns-8 gap-4">
-                {items.map((item) => (
-                  <GalleryItem key={item.id} item={item} />
-                ))}
-              </ul>
-            )}
-            <div className="h-8" aria-hidden="true" />
-          </div>
-
-          <div
-            aria-hidden="true"
-            className={`pointer-events-none absolute inset-x-0 top-0 z-10 h-8 bg-gradient-to-b from-paper to-transparent motion-safe:transition-opacity motion-safe:duration-200 ${
-              edges.top ? "opacity-100" : "opacity-0"
-            }`}
-          />
-          <div
-            aria-hidden="true"
-            className={`pointer-events-none absolute inset-x-0 bottom-0 z-10 h-8 bg-gradient-to-t from-paper to-transparent motion-safe:transition-opacity motion-safe:duration-200 ${
-              edges.bottom ? "opacity-100" : "opacity-0"
-            }`}
-          />
+      <div className="mx-auto flex flex-col px-[var(--gutter)]">
+        <div className="relative min-h-0">
+          {loading ? (
+            <div className="animate-pulse flex min-h-[300px] items-center justify-center">
+              <span className="text-muted">Loading gallery…</span>
+            </div>
+          ) : (
+            <ul className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 2xl:columns-6 3xl:columns-7 4xl:columns-8 gap-4">
+              {items.map((item) => (
+                <GalleryItem key={item.id} item={item} />
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </section>
