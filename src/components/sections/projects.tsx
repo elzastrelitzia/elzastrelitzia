@@ -65,7 +65,7 @@ export function Projects() {
             if (active) place(event.clientX, event.clientY);
           }}
           onMouseLeave={() => setActive(null)}
-          className="min-h-0 md:flex-1 md:overflow-y-auto md:overscroll-contain md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden"
+          className="min-h-0 md:flex-1 md:overflow-y-auto md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden"
         >
           <ol className="border-b border-line">
             {projects.map((project, index) => (
