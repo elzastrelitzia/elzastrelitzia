@@ -56,15 +56,6 @@ export function Gallery() {
       className="pb-[var(--footer-height)] pt-[var(--header-height)] md:h-[100svh]"
     >
       <div className="mx-auto flex flex-col px-[var(--gutter)] md:h-full">
-        <div className="flex shrink-0 items-baseline justify-between gap-6 py-8">
-          <h2 className="text-[var(--step--1)] uppercase tracking-[0.18em] text-muted">
-            Gallery
-          </h2>
-          <p className="text-[var(--step--1)] tabular-nums text-muted">
-            {String(items.length).padStart(2, "0")}
-          </p>
-        </div>
-
         <div className="relative min-h-0 md:flex-1">
           <div
             ref={scrollerRef}
