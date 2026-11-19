@@ -3,21 +3,26 @@
 import { useEffect, useRef, useState } from "react";
 
 import { GalleryItem } from "@/components/ui/gallery-item";
-import { gallery, type GalleryEntry } from "@/lib/gallery.gen";
 
 export function Gallery() {
   const scrollerRef = useRef<HTMLDivElement>(null);
+  const [items, setItems] = useState<{ id: string; alt: string; src: string }[]>(
+    [],
+  );
+  const [loading, setLoading] = useState(true);
   const [edges, setEdges] = useState({ top: false, bottom: false });
-  const [items, setItems] = useState<GalleryEntry[]>(gallery);
 
   useEffect(() => {
-    const shuffled = [...gallery];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setItems(shuffled);
+    let cancelled = false;
+    fetch("/api/gallery")
+      .then((res) => res.json())
+      .then((data) => {
+        if (!cancelled) setItems(data);
+        setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   useEffect(() => {
@@ -35,7 +40,6 @@ export function Gallery() {
 
     update();
     scroller.addEventListener("scroll", update, { passive: true });
-
     const observer = new ResizeObserver(update);
     observer.observe(scroller);
     if (scroller.firstElementChild) observer.observe(scroller.firstElementChild);
@@ -57,7 +61,7 @@ export function Gallery() {
             Gallery
           </h2>
           <p className="text-[var(--step--1)] tabular-nums text-muted">
-            {String(gallery.length).padStart(2, "0")}
+            {String(items.length).padStart(2, "0")}
           </p>
         </div>
 
@@ -70,11 +74,17 @@ export function Gallery() {
             onWheel={(event) => event.stopPropagation()}
             className="md:h-full md:overflow-y-auto md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden"
           >
-            <ul className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 2xl:columns-6 3xl:columns-7 4xl:columns-8 gap-4">
-              {items.map((item) => (
-                <GalleryItem key={item.id} item={item} />
-              ))}
-            </ul>
+            {loading ? (
+              <div className="animate-pulse flex min-h-[300px] items-center justify-center">
+                <span className="text-muted">Loading gallery…</span>
+              </div>
+            ) : (
+              <ul className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 2xl:columns-6 3xl:columns-7 4xl:columns-8 gap-4">
+                {items.map((item) => (
+                  <GalleryItem key={item.id} item={item} />
+                ))}
+              </ul>
+            )}
             <div className="h-8" aria-hidden="true" />
           </div>
 
